@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <table>
+        <tr><th>報修日期</th><th>報修事項</th><th>報修人</th></tr>
+        <tr>
+          <td>{{content.publication_date}}</td>
+          <td>{{content.description}}</td>          
+          <td>{{content.reporter}}</td></tr>
+ </table>
+
+        <form action="" method="post">{% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Submit" />
+        </form>
+        {% if content.picname %}
+        <img src="/static/upload/{{content.picname}}">
+        {% endif %}
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <table>
+        <tr><th>報修日期</th><th>報修事項</th><th>報修人</th><th>狀態</th><th>處理時間</th></tr>
+        {% for content in  contents %}
+        <tr>
+          <td>{{content.publication_date}}</td>
+          {% if user.is_authenticated %}
+          <td><a href="/edit/{{content.id}}">{{content.description}}</a></td>
+          {% else %}
+          <td>{{content.description}}</td>          
+          {% endif %}
+          <td>{{content.reporter}}</td>
+          <td>{{content.status_choice}}</td>
+          <td>{{content.handle_date}}</td>
+    </tr>
+        {% endfor %}    
+  </table>
+{% endblock %}
